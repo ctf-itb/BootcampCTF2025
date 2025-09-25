@@ -1,0 +1,27 @@
+name: "Not So Genetic"
+category: reverse engineering
+description: |- 
+    Genetic Algorithm without fitness function is just an obfuscator
+
+    Author: **kiwz**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{n0t_5o_R4nDom_N0r_gEn3tIc}
+
+files:
+    - dist/chall.pyc
+    - dist/secret.zip
+
+tags:
+    - medium
+
+# janlup ganti hidden pas mulai
+state: visible
+version: "0.1"
