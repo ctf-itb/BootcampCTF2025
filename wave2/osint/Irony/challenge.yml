@@ -1,0 +1,26 @@
+name: "Irony"
+category: osint
+description: |- 
+    MrBert is a self-proclaimed “cyber security influencer,” notorious for his sensational takes on data breaches and digital privacy. With thousands of followers, he never misses a chance to warn others about the importance of protecting personal information. Yet, in an ironic twist, MrBert once leaked his own data (intentionally and unintentionally), and traces of it still linger on the internet. Can you uncover his real identity and find his full name?
+
+    Flag format: `CTFITB2025{Full_Name}`
+    Example: `CTFITB2025{John_Doe}`
+
+    Author: **kiwz**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{Namsun_Bertin_Sembiring}
+
+tags:
+    - easy
+
+# janlup ganti hidden pas mau mulai
+state: visible
+version: "0.1"
