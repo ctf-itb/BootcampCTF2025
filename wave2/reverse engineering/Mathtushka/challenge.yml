@@ -1,0 +1,26 @@
+name: "Mathtushka"
+category: reverse engineering
+description: |- 
+    What? Math? NTT? Convolution?. Idk bruh, i'll rather doomscroll and blast MATUSHKA X ODNOGO ULTRAPHONK
+
+    Author: **ucokgallagher**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{mAtUSHK4_Odn090_1wjhe328dsaes}
+
+files:
+    - dist/matushka
+
+tags:
+    - easy
+
+# janlup ganti hidden pas mulai
+state: visible
+version: "0.1"
