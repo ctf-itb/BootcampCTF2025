@@ -1,0 +1,23 @@
+name: "Sanity Check"
+category: misc
+description: |- 
+    Are you still sane or already insane? 
+
+    Author: **Ucokgallagher**
+
+value: 1
+type: static
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{Oh_D3eR_D1d_U_founD_m3?}
+
+tags:
+    - sanity check
+
+# janlup ganti hidden pas mau mulai
+state: visible
+version: "0.1"
