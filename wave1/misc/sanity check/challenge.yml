@@ -5,8 +5,8 @@ description: |-
 
     Author: **Ucokgallagher**
 
-value: 1
-type: static
+value: 1000
+type: dynamic
 extra:
     initial: 1000
     decay: 30
