@@ -1,0 +1,1 @@
+flag = b"CTFITB2025{w3lc0me_t0_crypt0___9lhffff!}"
