@@ -5,7 +5,7 @@ services:
     ports:
       - "6970:6970"
     environment:
-      - FLAG=CTFITB2025{v3rY_v3Ry_5Up3r_3A5Y_SQL1nJ3cT10N_n1nknasd8123masdmia41}
+      - FLAG=CTFITB2025{v3rY_v3Ry_5Up3r_3A5Y_SQL1nJ3cT10N_n1nknasd8123maadaw132dqwdq}
       - FLASK_ENV=production
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
