@@ -1,0 +1,28 @@
+name: "SQ Litmus Test"
+category: web exploitation
+description: |- 
+    Find out your SQ level throught this single question SQ litmus test
+
+    Author: **BoredAngel**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+connection_info: http://163.47.10.146:6970/
+
+flags:
+    - CTFITB2025{v3rY_v3Ry_5Up3r_3A5Y_SQL1nJ3cT10N_n1nknasd8123masdmia41}
+
+tags:
+    - baby
+
+files:
+    - dist/sq_litmus_test-dist.tar.gz
+
+# janlup ganti hidden pas mau mulai
+state: hidden
+version: "0.1"

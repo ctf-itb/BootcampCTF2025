@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗣 About - Social Quotient Litmus Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>SQ LItmus Test</h1>
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}" class="nav-link">Test</a>
+                <a href="{{ url_for('about') }}" class="nav-link active">About</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="about-content">
+            <h2>About Social Quotient Litmus Test</h2>
+            
+            <section class="definition-section">
+                <h3>What is Social Quotient?</h3>
+                <p>Social Quotient (SQ) is a measure of an individual's social intelligence and their ability to navigate complex interpersonal relationships effectively. It encompasses several key components:</p>
+                
+                <div class="sq-components">
+                    <div class="component">
+                        <h4>Emotional Awareness</h4>
+                        <p>The ability to recognize, understand, and appropriately respond to emotions in oneself and others.</p>
+                    </div>
+                    
+                    <div class="component">
+                        <h4>Social Sensitivity</h4>
+                        <p>Heightened awareness of social cues, contexts, and the unspoken dynamics within group interactions.</p>
+                    </div>
+                    
+                    <div class="component">
+                        <h4>Interpersonal Skills</h4>
+                        <p>The capacity to communicate effectively, build rapport, and maintain healthy relationships across diverse social contexts.</p>
+                    </div>
+                    
+                    <div class="component">
+                        <h4>Social Cognition</h4>
+                        <p>The mental processes involved in perceiving, interpreting, and responding to social information and behavioral patterns.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="litmus-section">
+                <h3>What is a Litmus Test?</h3>
+                <p>Originally derived from chemistry, a litmus test is a simple procedure used to determine the acidic or basic nature of a solution. In broader contexts, it refers to:</p>
+                
+                <div class="litmus-explanation">
+                    <div class="litmus-point">
+                        <h4>Decisive Assessment</h4>
+                        <p>A single, straightforward test that provides clear indication of a particular quality or characteristic.</p>
+                    </div>
+                    
+                    <div class="litmus-point">
+                        <h4>Binary Classification</h4>
+                        <p>A method that categorizes subjects into distinct groups based on their response to a specific stimulus or scenario.</p>
+                    </div>
+                    
+                    <div class="litmus-point">
+                        <h4>Revealing Nature</h4>
+                        <p>An evaluation that uncovers fundamental attitudes, beliefs, or capabilities through a single critical question or situation.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="methodology-section">
+                <h3>Our Assessment Methodology</h3>
+                <p>This Social Quotient Litmus Test employs a single, carefully crafted scenario that reveals multiple dimensions of social intelligence:</p>
+                
+                <div class="methodology-points">
+                    <ul>
+                        <li><strong>Contextual Sensitivity:</strong> Measures awareness of social context and environmental cues</li>
+                        <li><strong>Emotional Recognition:</strong> Assesses ability to identify emotional states in others</li>
+                        <li><strong>Interpersonal Judgment:</strong> Evaluates decision-making in socially complex situations</li>
+                        <li><strong>Empathetic Response:</strong> Gauges consideration for others' feelings and needs</li>
+                        <li><strong>Social Navigation:</strong> Tests skill in balancing multiple social priorities</li>
+                    </ul>
+                </div>
+                
+                <div class="scoring-info">
+                    <h4>Scoring Framework</h4>
+                    <p>Responses are evaluated across a comprehensive spectrum:</p>
+                    <div class="score-ranges">
+                        <div class="score-range high">
+                            <span class="range">80-100</span>
+                            <span class="label">High Social Intelligence</span>
+                        </div>
+                        <div class="score-range medium">
+                            <span class="range">60-79</span>
+                            <span class="label">Moderate Social Intelligence</span>
+                        </div>
+                        <div class="score-range low">
+                            <span class="range">0-59</span>
+                            <span class="label">Developing Social Intelligence</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="cta-section">
+                <a href="{{ url_for('home') }}" class="cta-button">Take the Assessment</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Social Quotient Litmus Test</p>
+            <p>Professional Assessment Tool for Social Intelligence</p>
+        </div>
+    </footer>
+</body>
+</html>

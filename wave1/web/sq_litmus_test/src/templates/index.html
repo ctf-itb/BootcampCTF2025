@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗣 Social Quotient Litmus Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>SQ LItmus Test</h1>
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}" class="nav-link active">Test</a>
+                <a href="{{ url_for('about') }}" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header-section">
+            <h2>Social Intelligence Assessment</h2>
+            <p class="subtitle">A single-question litmus test to evaluate your social quotient</p>
+        </div>
+        
+        <form id="sqForm" class="test-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+            
+            <div class="scenario-section">
+                <h3>Social Scenario Assessment</h3>
+                <div class="scenario-text">
+                    <p><strong>Scenario:</strong> You walk into a meeting room where two colleagues are having what appears to be an intense, private conversation. One person looks upset, and both stop talking when they notice you. You need to retrieve a document from this room for an urgent deadline.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="scenario">Your Response:</label>
+                    <select name="scenario" id="scenario" required>
+                        <option value="">Select your most likely response...</option>
+                        <option value="interrupt">Immediately ask for the document, explaining the urgent deadline</option>
+                        <option value="wait_silent">Wait silently near the door until they finish their conversation</option>
+                        <option value="acknowledge">Briefly apologize for the interruption and ask when would be appropriate to return</option>
+                        <option value="engage_later">Acknowledge the situation, offer support if needed, and suggest returning later</option>
+                        <option value="facilitate">Sensitively gauge if they need privacy or support, offering to facilitate a solution</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                Analyze Social Quotient
+            </button>
+        </form>
+        
+        <div id="result" class="result">
+            <h3>Assessment Results</h3>
+            <div class="score-container">
+                <span class="score-label">Social Quotient Score:</span>
+                <span class="score" id="score">0</span>
+            </div>
+            <div class="assessment-message" id="message"></div>
+            <div class="result-category">
+                <span id="category-label"></span>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Social Quotient Litmus Test</p>
+            <p>Professional Assessment Tool for Social Intelligence</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('sqForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch('/test', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                document.getElementById('score').textContent = result.score;
+                if (result.message) {
+                    if (Array.isArray(result.message)) {
+                        document.getElementById('message').textContent = result.message[Math.floor(Math.random() * (result.message.length))];
+                    }
+                    else {
+                        document.getElementById('message').textContent = result.message;
+                    }
+                }
+                else {
+                    document.getElementById('message').textContent = "Acceptable social quotient demonstrated.";
+                }
+                
+                const categoryLabel = document.getElementById('category-label');
+                categoryLabel.textContent = `Assessment Level: ${result.category.charAt(0).toUpperCase() + result.category.slice(1)}`;
+                categoryLabel.className = `category ${result.category}`;
+                
+                document.getElementById('result').style.display = 'block';
+                
+                // Scroll to result
+                document.getElementById('result').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+                
+            } catch (error) {
+                alert('Assessment error. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

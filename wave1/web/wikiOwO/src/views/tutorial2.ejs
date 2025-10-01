@@ -1,0 +1,88 @@
+<%- include('partials/header') %>
+
+<div class="main-content">
+    <div class="content">
+        <h1>How to Create a Reverse Shell</h1>
+        <p>
+            Some CTF Challenges like pyjail can sometimes need a revshell to get the flag.
+            This tutorial will help you to create a revshell that you can interact in your terminal.
+        </p>
+        
+        <h2>Reverse Shell Using Pinggy</h2>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <h3 class="step-title">Start a Local Netcat Listener</h3>
+            <div class="step-content">
+                <img src="/images/revshell-step-1.png" alt="Pinggy website" class="step-image">
+                <p>Start a local netcat server by doing this command, `nc -lnvp 4000` or any other port you want.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <h3 class="step-title">Visit Pinggy Website</h3>
+            <div class="step-content">
+                <img src="/images/server-step-1.png" alt="Pinggy website" class="step-image">
+                <p>Go to <a href="https://pinggy.io/"> Pinggy</a> and configure the local address to point to your localhost web server.</p>
+                <div class="tip">Make sure to use TCP protocol. Typically the connection made by revshell is a TCP connection</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <h3 class="step-title">Start the Tunneling Service</h3>
+            <div class="step-content">
+                <img src="/images/server-step-2.png" alt="Pinggy website" class="step-image">
+                <p>
+                    Copy the command and paste it to your terminal. 
+                    This will create a tunnel connecting your localhost server to a public IP address. 
+                    It will give you the public url to be used when making the revshell.
+                </p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <h3 class="step-title">Create the Reverse Shell Payload</h3>
+            <div class="step-content">
+                <img src="/images/revshell-step-2.png" alt="Pinggy website" class="step-image">
+                <p>
+                    Visit this <a href="https://www.revshells.com/">reverse shell generator</a> and put the public url and port.
+                    Choose a suitable payload for your CTF challenge.
+                </p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            <h3 class="step-title">Send the payload</h3>
+            <div class="step-content">
+                <p>Send the created payload to your target and we will have a reverse shell</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3>What You'll Need</h3>
+        <ul>
+            <li>nc command</li>
+            <li>Tunneling Service (ngrok, Pinggy, etc)</li>
+            <li>Wifi Connection</li>
+        </ul>
+
+        <h3>Difficulty Level</h3>
+        <p><strong>Easy:</strong> Reverse Shell using Pinggy</p>
+        <p><strong>Time Required:</strong> 2 - 3 minutes</p>
+
+        <div class="related-articles">
+            <h3>Related Articles</h3>
+            <ul>
+                <li><a href="/setup-an-attack-server">How to Setup an Attack Server</a></li>
+                <li><a href="/">Browse All Tutorials</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

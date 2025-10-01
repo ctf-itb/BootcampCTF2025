@@ -1,0 +1,29 @@
+name: "wikiOwO"
+category: web exploitation
+description: |- 
+    Learn how to create a server to be used in your CTF journey.
+    Please do read the tutorial. It'll be helpful
+
+    Author: **BoredAngel**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+connection_info: http://163.47.10.146:6971/
+
+flags:
+    - CTFITB2025{y444yYyyY_n0W_y0u_KNoW_h0wToM4k3_4_att4K_s3RvEr_131d1nuo12g39123}
+
+tags:
+    - easy
+
+files:
+    - dist/wikiOwO-dist.tar.gz
+
+# janlup ganti hidden pas mau mulai
+state: hidden
+version: "0.1"

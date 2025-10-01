@@ -1,0 +1,14 @@
+services:
+  wikiowo:
+    ports:
+      - 6971:6971
+    build:
+      context: .
+    environment:
+      FLAG: CTFITB2025{y444yYyyY_n0W_y0u_KNoW_h0wToM4k3_4_att4K_s3RvEr_131d1nuo12g39123}
+      APPURLREGEX: ^http(|s)://.*$
+      APPLIMIT: 2
+      APPLIMITTIME: 60
+      DISPLAY: ${DISPLAY}
+      PORT: 6971
+    restart: unless-stopped

@@ -1,0 +1,12 @@
+services:
+  file-upload-app:
+    build:
+      context: .
+      args:
+        - FLAG=CTFITB2025{C0ngRats_y0uH4v3_l3ArN_LFI_12312denj1mxc131omx13o1sh9d1nh1mdqw9}
+    ports:
+      - "6969:6969"
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

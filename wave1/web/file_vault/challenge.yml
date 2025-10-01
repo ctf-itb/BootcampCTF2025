@@ -1,0 +1,28 @@
+name: "File Vault"
+category: web exploitation
+description: |- 
+    Upload and View your files in this very secure website (lmao)
+
+    Author: **BoredAngel**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+connection_info: http://163.47.10.146:6969/
+
+flags:
+    - CTFITB2025{C0ngRats_y0uH4v3_l3ArN_LFI_12312denj1mxc131omx13o1sh9d1nh1mdqw9}
+
+tags:
+    - baby
+
+files:
+    - dist/file_vault-dist.tar.gz
+
+# janlup ganti hidden pas mau mulai
+state: hidden
+version: "0.1"

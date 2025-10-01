@@ -1,0 +1,252 @@
+{% extends "base.html" %} {% block content %}
+<div class="files-section">
+    <style>
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .files-count {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .search-box {
+            padding: 10px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 300px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .files-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .file-card {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-card:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .file-icon {
+            font-size: 2.5rem;
+            margin-right: 20px;
+            width: 60px;
+            text-align: center;
+        }
+
+        .file-icon.file-image {
+            color: #28a745;
+        }
+        .file-icon.file-text {
+            color: #dc3545;
+        }
+        .file-icon.file-lines {
+            color: #ffc107;
+        }
+        .file-icon.file {
+            color: #6c757d;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 5px;
+            word-break: break-all;
+        }
+
+        .file-details {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #d1d3d4;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+            margin-bottom: 20px;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: #e9ecef;
+            border-radius: 6px;
+            padding: 2px;
+        }
+
+        .view-btn {
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <div class="files-header">
+        <div>
+            <h2><i class="fas fa-folder-open"></i> File Browser</h2>
+            <div class="files-count">
+                {% if files %}{{ files|length }} file(s){% else %}No files{%
+                endif %}
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 15px">
+            <input
+                type="text"
+                class="search-box"
+                placeholder="Search files..."
+                id="search-input"
+            />
+            <a href="/" class="btn btn-secondary">
+                <i class="fas fa-plus"></i> Upload More
+            </a>
+        </div>
+    </div>
+
+    {% if error %}
+    <div class="error-message">
+        <i class="fas fa-exclamation-triangle"></i> Error loading files: {{
+        error }}
+    </div>
+    {% endif %} {% if files %}
+    <div class="files-grid" id="files-container">
+        {% for file in files %}
+        <div class="file-card" data-name="{{ file.filename.lower() }}">
+            <div class="file-icon">
+                <i class="fas fa-{{ file.icon }}"></i>
+            </div>
+
+            <div class="file-info">
+                <div class="file-name">{{ file.filename }}</div>
+                <div class="file-details">
+                    {{ file.size }} • {{ file.modified }}
+                </div>
+            </div>
+
+            <div class="file-actions">
+                <a
+                    href="{{ file.download_url }}"
+                    class="btn-small btn-primary"
+                    target="_blank"
+                >
+                    <i class="fas fa-external-link-alt"></i> Open
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <i class="fas fa-folder-open"></i>
+        <h3>No files uploaded yet</h3>
+        <p>Upload your first file to get started</p>
+        <a href="/" class="btn" style="margin-top: 20px">
+            <i class="fas fa-upload"></i> Upload Files
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    // Search functionality
+    const searchInput = document.getElementById("search-input")
+    const fileCards = document.querySelectorAll(".file-card")
+
+    searchInput.addEventListener("input", function () {
+        const searchTerm = this.value.toLowerCase()
+
+        fileCards.forEach((card) => {
+            const fileName = card.dataset.name
+            if (fileName.includes(searchTerm)) {
+                card.style.display = "flex"
+            } else {
+                card.style.display = "none"
+            }
+        })
+    })
+
+    // File card click to open
+    fileCards.forEach((card) => {
+        card.addEventListener("click", function (e) {
+            if (!e.target.closest(".file-actions")) {
+                const openLink = card.querySelector(".btn-primary")
+                if (openLink) {
+                    window.open(openLink.href, "_blank")
+                }
+            }
+        })
+    })
+</script>
+{% endblock %}

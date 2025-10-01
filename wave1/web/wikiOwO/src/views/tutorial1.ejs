@@ -1,0 +1,105 @@
+<%- include('partials/header') %>
+
+<div class="main-content">
+    <div class="content">
+        <h1>How to Setup an Attack Server</h1>
+        <p>
+            Setting up an attack server is often times crucial. Especially in XSS Challenges where we are provided with 
+            an admin bot. There are many ways to do this but we will show you a free and easy way to create a temporary
+            attack server to use in CTFs Competitions. 
+        </p><br>
+        <p>
+            In this tutorial, we'll be using Pinngy to create a TCP tunnel to give our local web server a public ip
+            that can be connected from anywhere in the world. There are many free tunneling services but the one 
+            we'll be using is Pinggy as the TCP tunnel is free without need a Credit Card information (unlike ngrok)
+        </p>
+        
+        <h2>Attack Server using Pinggy</h2>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <h3 class="step-title">Create your local server</h3>
+            <div class="step-content">
+                <p>You can use any programming languange and frameworks but i recommend just using a simple flask web server</p>
+                <div class="tip">Prompt: "create a simple flask web server that only has one page"</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <h3 class="step-title">Test out the server</h3>
+            <div class="step-content">
+                <p>Go to localhost and make sure the server is up and running.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <h3 class="step-title">Visit Pinggy Website</h3>
+            <div class="step-content">
+                <img src="/images/server-step-1.png" alt="Pinggy website" class="step-image">
+                <p>Go to <a href="https://pinggy.io/"> Pinggy</a> and configure the local address to point to your localhost web server.</p>
+                <div class="tip">Make sure to use TCP protocol. the HTTP protocol will have a confirmation page that stops the CTF bot to access our server</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <h3 class="step-title">Start the Tunneling Service</h3>
+            <div class="step-content">
+                <img src="/images/server-step-2.png" alt="Pinggy website" class="step-image">
+                <p>
+                    Copy the command and paste it to your terminal. 
+                    This will create a tunnel connecting your localhost server to a public IP address. 
+                    It will give you the public url to be used by the bot.
+                </p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            <h3 class="step-title">We're Done!</h3>
+            <div class="step-content">
+                <p>Just give the CTF bot the public URL and it will go to your web server</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">6</span>
+            <h3 class="step-title">Create payload in your attacker server</h3>
+            <div class="step-content">
+                <p>Understand the CTF Challenge and make appropriate payload to get the flag. You can do this \(0v0)/</p>
+            </div>
+        </div>
+
+        
+        <h2>Troubleshooting Common Problems</h2>
+        <ul>
+            <li><strong>Bot isn't visiting:</strong> Make sure you use TCP tunneling and NOT HTTP tunneling to avoid the confirmation page</li>
+            <li><strong>Localhost not connected:</strong> Check the port again, make sure your local server port is the one being tunneled by Pinggy</li>
+        </ul>
+    </div>
+
+    <div class="sidebar">
+        <h3>What You'll Need</h3>
+        <ul>
+            <li>A Wifi Connection</li>
+            <li>Tunneling Service (ngrok, pinggy, etc)</li>
+            <li>Web server of your choosing (Flask, Express, etc)</li>
+        </ul>
+
+        <h3>Difficulty Level</h3>
+        <p><strong>Easy:</strong> A simple flask app tunneled by pinggy</p>
+        <p><strong>Time Required:</strong> 2 - 5 minutes</p>
+
+        <div class="related-articles">
+            <h3>Related Articles</h3>
+            <ul>
+                <li><a href="/how-to-create-a-revshell">How to Create a Reverse Shell</a></li>
+                <li><a href="/">Browse All Tutorials</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
