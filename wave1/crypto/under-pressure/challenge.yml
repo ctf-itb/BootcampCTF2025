@@ -1,0 +1,37 @@
+name: "Under Pressure"
+# This is used to group challenges in the CTFd UI.
+# choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
+category: cryptography
+description: |- 
+    You finally confess your feelings. But, this time, you won't regret it.
+
+    ![chinatsu](https://media1.tenor.com/m/VR6TAKaZJiMAAAAd/chinatsu-kano-kano-chinatsu.gif)
+
+    Author: **TunanganWinter**
+
+attribution: TunanganWinter
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{I_looped_this_song_while_making_this_chall_https://youtu.be/sakOV_IkB4o?si=EtPZK5H8V2p_BaYV}
+
+
+# Provide paths to files from the same directory that this file is in
+files:
+    - dist/dist.zip
+
+tags:
+    - easy
+
+# If provided, the field can take one of two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
