@@ -1,0 +1,288 @@
+/* WEBKIT */
+
+/* Handle Scroll Wheel */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    width: 5px;
+    height: 5px;
+    display: none;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+    display: inline;
+    width: 5px;
+    height: 5px;
+    border-radius:200px;
+    transition: all 1s ease;
+}
+
+/* Page */
+body {
+    height: 100vh;
+    background-color: black;
+    margin: 0rem;
+    color: white;
+    font-family: 'Roboto';
+}
+
+.container {
+    margin: auto;
+    padding: 0 2rem;
+}
+
+.content {
+    white-space: nowrap;
+    overflow-x: auto;
+    display: flex;
+}
+
+.profile {
+    height: 100vh;
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile > img {
+    width: 15rem;
+    border-radius: 50%;
+}
+
+.profile > ul {
+    list-style: none;
+}
+
+.profile > ul > li {
+    float: left;
+    padding: 16px;
+}
+
+.logo {
+    max-height: 3rem;
+}
+
+.project-list {
+    display: flex;
+    gap: 4vmin;
+}
+
+.project-list img {
+    width: 40vmin;
+    height: 56vmin;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.project-list ul {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+/* Language Tag CSS */
+.opt {
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.js {
+    background-color: yellow;
+    color: black;
+}
+
+.firebase {
+    background-color: #ff7f50;
+    color: black;
+}
+
+.python {
+    background-color: #0172B6;
+    color: white;
+}
+
+.java {
+    background-color: #f4602a;
+    color: white;
+}
+
+.go {
+    background-color: aqua;
+    color: black;
+}
+
+.cache {
+    background-color: #888;
+    color: white;
+}
+
+/* Animation Text */
+.animated-text {
+
+}
+
+.animated-text span {
+    position: relative;
+}
+
+.animated-text span::before {
+    content: "Programmer";
+    color: #ff7f50;
+    animation: words 20s infinite;
+}
+
+.animated-text span::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: calc(100% + 8px);
+    border-left: 10px solid #ff7f50;
+    background-color: black;
+    right: -8px;
+    animation: cursor 1s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+    to {
+        border-left: 8px solid #ff7f5000;
+    }
+}
+
+@keyframes words {
+    0%, 20% {
+        content: "Programmer";
+    }
+    21%, 40% {
+        content: "Novel Reader";
+    }
+    41%, 60% {
+        content: "Informatics Student";
+    }
+    61%, 80% {
+        content: "Cybersec Newb";
+    }
+    81%, 100% {
+        content: "Web, Malware, Forensic, Osint newb";
+    }
+}
+
+@keyframes typing {
+    10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {
+        width: 0;
+    }
+    5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% {
+        width: calc(100% + 4px);
+    }
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 767px) {
+    body {
+        max-width: 100vw;
+        height: auto;
+        margin: auto;
+    }
+
+    .content {
+        white-space: normal;
+        display: block;
+    }
+
+    .profile {
+        width: 100vw;
+        display: block;
+        height: auto;
+        padding: 0;
+        margin: auto 1rem;
+    }
+
+    .project-list {
+        display: block;
+        margin: auto;
+    }
+
+    .project-list img {
+        width: 60vmin;
+    }
+
+    .project-list ul {
+        width: auto;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .card:hover {
+
+    }
+}
+
+.flag-btn{
+  background: #111;
+  color: #fff;
+  border: 1px solid #2a2a2a;
+  padding: 0.6rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: .2px;
+  transition: background-color .2s ease, border-color .2s ease,
+              box-shadow .2s ease, transform .08s ease;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset,
+              0 6px 18px rgba(0,0,0,.28);
+  user-select: none;
+}
+
+.flag-btn:hover{
+  background: #161616;
+  border-color: #3a3a3a;
+  transform: translateY(-1px);
+}
+
+.flag-btn:active{
+  transform: translateY(0);
+  background: #141414;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset,
+              0 2px 8px rgba(0,0,0,.26);
+}
+
+.flag-btn:focus-visible{
+  outline: none;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06) inset,
+    0 0 0 3px rgba(255,127,80,.35);
+}
+
+.profile .flag-btn{
+  margin-top: 1rem;
+}

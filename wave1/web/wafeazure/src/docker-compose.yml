@@ -1,0 +1,11 @@
+services:
+  proxy:
+    build: ./proxy # proxy? omaigat
+    restart: unless-stopped
+    ports:
+      - 8115:8115
+  backend:
+    build: ./web
+    restart: unless-stopped
+    environment:
+      - FLAG=CTFITB2025{wazeazure😭😭😭_plissss😭😭😭_jangan_pensi_ctf_dulu😭😭😭_HUAAAAAAAAAAAA😭😭😭}

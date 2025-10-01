@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Edbert's Portfolio</title>
+
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Web Portfolio">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="WazeAzure">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- import stylesheet -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="content">
+      <div class="container profile">
+        <img src="./images/profile-pict.png" alt="profile picture">
+        <p>Welcome To</p>
+        <h1>Edbert Eddyson Gunawan's Blog</h1>
+
+        <!-- Animated Text -->
+        <div class="animated-text">
+          I'm a <span></span>
+        </div>
+
+        <ul>
+          <li><a href="mailto:edbert.e.gunawan@protonmail.com"><img src="./images/logo-email.svg" class="logo" alt="email"></a></li>
+          <li><a href="https://www.instagram.com/ed_bert_"><img src="./images/logo-instagram.svg" class="logo" alt="instagram"></a></li>
+          <li><a href="https://github.com/WazeAzure"><img src="./images/logo-github.svg" class="logo" alt="github"></a></li>
+        </ul>
+
+        <button id="flag-btn" type="button" class="flag-btn" aria-label="Get Flag">flag?</button>
+      </div>
+
+      <div class="container">
+        <h1>Project List</h1>
+      </div>
+
+      <div class="container project-list">
+        <div class="card">
+          <img loading="lazy" class="image" src="./images/project-1.png" draggable="false" alt="project 1" />
+          <p><b>Web Photography</b></p>
+          <ul>
+            <li><span class="opt js">javascript</span></li>
+            <li><span class="opt firebase">firebase</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <img loading="lazy" class="image" src="./images/project-2.png" draggable="false" alt="project 2" />
+          <p><b>Bezier Curve</b></p>
+          <ul>
+            <li><span class="opt python">python</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <img loading="lazy" class="image" src="./images/project-3.png" draggable="false" alt="project 3" />
+          <p><b>World Ladder Solver</b></p>
+          <ul>
+            <li><span class="opt java">java</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <img loading="lazy" class="image" src="./images/project-4.png" draggable="false" alt="project 4" />
+          <p><b>Wiki Race Solver</b></p>
+          <ul>
+            <li><span class="opt go">go</span></li>
+            <li><span class="opt js">javascript</span></li>
+            <li><span class="opt cache">cache</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container experience">
+      </div>
+    </div>
+
+    <script>
+      const btn = document.getElementById("flag-btn");
+      btn?.addEventListener("click", async () => {
+        try {
+          const res = await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ plisssakumauflaggratisss: true }),
+          });
+          const text = await res.text();
+          alert(text);
+        } catch (e) {
+          alert("Request failed: " + e);
+        }
+      });
+    </script>
+  </body>
+</html>
