@@ -1,0 +1,37 @@
+name: "Vault"
+# This is used to group challenges in the CTFd UI.
+# choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
+category: cryptography
+description: |- 
+    You found a vault that stores some important data. However, the vault uses a very weak encryption algorithm. But.. Is it really that weak?
+
+    Author: **TunanganWinter**
+
+attribution: TunanganWinter
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+connection_info: nc 163.47.10.146 8017
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{wh0000ps_1_f0r90t_t0_us3_s4f3r_a3s_4lg0r1thm_3h3}
+
+
+# Provide paths to files from the same directory that this file is in
+files:
+    - dist/vault.py
+
+tags:
+    - easy
+
+# If provided, the field can take one of two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"

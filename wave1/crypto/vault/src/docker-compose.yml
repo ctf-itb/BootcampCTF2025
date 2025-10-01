@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  read-around:
+    build: .
+    restart: on-failure
+    container_name: vault
+    read_only: true
+    ports:
+      - "8017:8017"
