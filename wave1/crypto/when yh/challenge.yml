@@ -1,0 +1,37 @@
+name: "when yh"
+# This is used to group challenges in the CTFd UI.
+# choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
+category: cryptography
+description: |- 
+    Kapan ya bisa gitu juga, kan aku juga mau. When yh
+
+    ![mykisah](https://i0.wp.com/waifupulse.com/wp-content/uploads/2025/07/When-Does-Rintaro-Finally-Confess-to-Kaoruko-Waguri-in-The-Fragrant-Flower-Blooms-With-Dignity.png)
+
+    Author: **k4tou**
+
+attribution: k4tou
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{https://youtu.be/NLphEFOyoqM?si=ST3WMAnGfuKXpzU3}
+
+
+# Provide paths to files from the same directory that this file is in
+files:
+    - dist/dist.zip
+
+tags:
+    - medium
+
+# If provided, the field can take one of two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
