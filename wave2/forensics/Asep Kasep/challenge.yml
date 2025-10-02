@@ -2,6 +2,9 @@ name: "Asep Kasep"
 category: forensics
 description: |- 
     Bantu Asep Kasep untuk mengembalikan file berharganya setelah terkena ransomware akibat kecerobohannya.
+
+    🚨Peringatan🚨
+    Jangan jalankan program .ps1 jika tidak ingin bernasib sama seperti Asep
     
     Wrap your findings inside: CTFITB2025{*}
 
