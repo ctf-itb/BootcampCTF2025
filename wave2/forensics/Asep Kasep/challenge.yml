@@ -1,0 +1,37 @@
+name: "Asep Kasep"
+category: forensics
+description: |- 
+    Bantu Asep Kasep untuk mengembalikan file berharganya setelah terkena ransomware akibat kecerobohannya.
+    
+    Wrap your findings inside: CTFITB2025{*}
+
+    Attachment:
+    https://drive.google.com/file/d/1n2HfnAbDnGohJKPok4eu8WpDE3gjzLnb/view?usp=sharing
+    
+    Password: 9BppAD4Uf1OPv9hKMLD2tOFtewFY386E 
+
+    Author: **kiwz**
+
+# Don't change this
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{A53p_9oB10k_G4mp4n9_k3n4_t1pu}
+
+# Tags are used to provide additional public tagging to a challenge
+tags:
+    - hard
+
+
+# If provided, the field can take one of two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
