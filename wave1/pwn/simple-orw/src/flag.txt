@@ -1,0 +1,1 @@
+CTFITB2025{linux_filesystem_gives_too_much_information_ngl_3721947}

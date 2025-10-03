@@ -1,0 +1,8 @@
+name: simple-orw
+services:
+  chall:
+    build: .
+    ports:
+      - "8910:1337"
+    restart: on-failure
+    container_name: simple-orw
