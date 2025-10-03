@@ -1,0 +1,35 @@
+name: "LLLinear Algebra 101"
+# This is used to group challenges in the CTFd UI.
+# choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
+category: cryptography
+description: |- 
+    day 0 trying to learn linear algebra, and you found this super easy challenge! can you solve it?
+
+    Author: **k4tou**
+
+attribution: k4tou
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{con9r4tzzz_y0u_h4v3_l34rn3d_lw3_w_lin4l9_99a7523}
+
+
+# Provide paths to files from the same directory that this file is in
+files:
+    - dist/dist.zip
+
+tags:
+    - ???
+
+# If provided, the field can take one of two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
