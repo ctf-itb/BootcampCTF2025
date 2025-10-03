@@ -1,0 +1,30 @@
+name: "Lost"
+category: forensics
+description: |- 
+    Tolong bantu aku mencari my istri yang hilang. Tapi sebelum menghilang, dia sempat mengirimkan file aneh ini, semoga my istri tidak kenapa-kenapa😭😭😭
+
+    Author: **TunanganWinter**
+
+# Don't change this
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{f1n4lly_1_f0und_y0u__l3ts_g0_h0m3_sh4ll_w3?}
+
+# Tags are used to provide additional public tagging to a challenge
+tags:
+    - medium/hard
+
+
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
