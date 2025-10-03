@@ -22,6 +22,9 @@ flags:
 tags:
     - medium/hard
 
+files:
+    - dist/lost-signal.enc
+    - dist/lost.pcap
 
 # If provided, the field can take one of two values: hidden, visible.
 state: visible
