@@ -17,7 +17,7 @@ $(OUTPUT): src/chall src/chall.c src/Dockerfile src/docker-compose.yml
 
 define CHALLENGE
 name: "simple orw"
-category binary exploitation
+category: binary exploitation
 description: |-
     Seriously, what harm could this little ORW program possibly cause?
     
