@@ -1,0 +1,28 @@
+name: "Sniff"
+category: forensics
+description: |- 
+    Sniff sniff, what is mommy and daddy shark discussing about
+
+    Author: **kiwz**
+
+attribution: kiwz
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{m0mmy_4nd_D4ddy_shark_1s_ch4tting} 
+
+files:
+    - dist/sniff.pcap
+
+tags:
+    - easy
+
+state: visible
+
+version: "0.1"
