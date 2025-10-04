@@ -1,0 +1,41 @@
+name: "Stegatroll"
+category: forensics
+description: |- 
+    just bits of trolling hehe
+
+    Author: **kiwz**
+
+attribution: kiwz
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{a_b1t_0r_r4ther_b1t5_0f_Tr0ll1n9_h3h3}
+
+files:
+    - dist/troll.png
+
+tags:
+    - easy
+    - steganography
+
+hints:
+    - {
+        content: "the real flag is 'scattered' around at the deepest point",
+        cost: 0
+    }
+    - {
+        content: "tools will be helpful",
+        cost: 0
+    }
+
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
