@@ -15,9 +15,7 @@ size_t input(const char *prompt, char *buffer, size_t size)
     {
         char c = getchar();
         if (c == '\n')
-        {
             break;
-        }
         buffer[i] = c;
     }
     buffer[i] = '\0';
@@ -64,7 +62,7 @@ int main()
     size_t size = MIN(atoi(buffer), sizeof(buffer));
 
     fseek(file, offset, SEEK_SET);
-    fread(buffer, sizeof(char), size, in_file);
+    size = fread(buffer, sizeof(char), size, in_file);
     fwrite(buffer, sizeof(char), size, out_file);
     fclose(file);
 
