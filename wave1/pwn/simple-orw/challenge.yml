@@ -15,5 +15,5 @@ flags:
     - CTFITB2025{linux_filesystem_gives_too_much_information_ngl_3721947}
 files:
     - dist/dist.zip
-state: hidden
+state: visible
 version: "0.1"

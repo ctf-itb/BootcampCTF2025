@@ -15,5 +15,5 @@ flags:
     - CTFITB{5hak3spear_4hhh_typ3th}
 files:
     - dist/rpg
-state: hidden
+state: visible
 version: "0.1"
