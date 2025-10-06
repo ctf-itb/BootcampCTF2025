@@ -1,0 +1,19 @@
+name: "RPG"
+category: binary exploitation
+description: |-
+    Want to play some game ??
+    
+    Author: **Kurond**
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 1000
+connection_info: nc 20.195.12.50 1230
+flags:
+    - CTFITB{5hak3spear_4hhh_typ3th}
+files:
+    - dist/rpg
+state: hidden
+version: "0.1"
