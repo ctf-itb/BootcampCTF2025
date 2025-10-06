@@ -1,0 +1,32 @@
+name: "Asep's Secret"
+category: forensics
+description: |- 
+    i’ve been monitoring Asep’s computer.
+    what secrets could he be hiding?
+
+    Author: **kiwz**
+
+# Don't change this
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+files:
+    - dist/punyaasep.pcap
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{h4ti_h4ti_trafF1c_UsB_ny4_d15ad4p!!!s33_y0u_1n_ctf_c0mmun1ty}
+
+tags:
+    - b aja
+
+
+# If provided, the field can take one of two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
