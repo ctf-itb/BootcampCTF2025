@@ -1,0 +1,19 @@
+name: "silver"
+category: binary exploitation
+description: |-
+    please solve this! i havent made a solver 🗿
+    
+    Author: **Etynso**
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 1000
+connection_info: nc 163.47.10.146 8888
+flags:
+    - CTFITB2025{https://www.youtube.com/watch?v=tmPzFAuKMA8}
+files:
+    - dist/dist.zip
+state: hidden
+version: "0.1"

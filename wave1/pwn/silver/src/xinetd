@@ -1,0 +1,18 @@
+service poke
+{
+    disable         = no
+    type            = UNLISTED
+    socket_type     = stream
+    protocol        = tcp
+    wait            = no
+    user            = user
+    port            = 8888
+    bind            = 0.0.0.0
+    server          = /run.sh
+    per_source      = UNLIMITED
+    rlimit_cpu      = 60
+    rlimit_as       = 256M
+    instances       = 50
+    banner_success  = /etc/issue
+    log_on_failure  += USERID
+}
