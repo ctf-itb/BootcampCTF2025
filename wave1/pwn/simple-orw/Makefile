@@ -27,7 +27,7 @@ type: dynamic
 extra:
     initial: 1000
     decay: 30
-    minimum: 1000
+    minimum: 100
 connection_info: nc 163.47.10.146 8910
 flags:
     - $(FLAG)

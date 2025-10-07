@@ -9,7 +9,7 @@ type: dynamic
 extra:
     initial: 1000
     decay: 30
-    minimum: 1000
+    minimum: 100
 connection_info: nc 20.195.12.50 1330
 flags:
     - CTFITB{w3lc0m3_t0_b1n4ry_3xp10it4t10n} 
