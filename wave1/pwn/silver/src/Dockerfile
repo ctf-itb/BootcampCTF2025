@@ -21,7 +21,7 @@ RUN chown -R root:root . && \
     chmod o+rx . && \
     chmod 444 flag.txt && \
     chmod a+x chall && \
-    chmod +x /run.sh \
+    chmod +x /run.sh && \
     chmod +x /home/user/ld-linux-x86-64.so.2
 
 CMD ["/usr/sbin/xinetd", "-dontfork"]
