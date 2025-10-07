@@ -1,0 +1,7 @@
+services:
+  babybof:
+    build: .
+    restart: on-failure
+    ports:
+      - "1330:1330"
+

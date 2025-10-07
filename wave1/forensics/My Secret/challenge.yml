@@ -17,7 +17,7 @@ extra:
 
 flags:
     # A static case sensitive flag
-    - CTFITB2025{R0cky0u_is_us3fu1_isn’t_1t???_Pl3ase_d0n’t_t3ll_thi5_t0_Adit}
+    - CTFITB2025{R0cky0u_is_us3fu1_isn't_1t???_Pl3ase_d0n't_t3ll_thi5_t0_Adit}
 
 # Tags are used to provide additional public tagging to a challenge
 tags:
@@ -30,4 +30,4 @@ files:
 state: visible
 
 # Specifies what version of the challenge specification was used.
-version: "0.1"
+version: "0.2"
