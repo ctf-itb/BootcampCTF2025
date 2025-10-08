@@ -1,9 +1,9 @@
-name: "LLLinear Algebra 101"
+name: "kapan ya"
 # This is used to group challenges in the CTFd UI.
 # choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
 category: cryptography
 description: |- 
-    day 0 trying to learn linear algebra, and you found this super easy challenge! can you solve it?
+    Apakah kategori crypto dari CTF ITB akan punah?
 
     Author: **k4tou**
 
@@ -24,9 +24,6 @@ flags:
 # Provide paths to files from the same directory that this file is in
 files:
     - dist/dist.zip
-
-tags:
-    - ???
 
 # If provided, the field can take one of two values: hidden, visible.
 state: visible
