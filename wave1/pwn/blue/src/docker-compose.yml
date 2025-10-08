@@ -1,0 +1,8 @@
+name: printf-pwn
+services:
+  chall:
+    build: .
+    ports:
+      - "8555:1337"
+    restart: on-failure
+    container_name: printf-pwn
