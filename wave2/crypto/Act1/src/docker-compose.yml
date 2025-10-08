@@ -1,9 +1,9 @@
 version: "3.8"
 services:
-  jackpot:
+  act1:
     build: .
     restart: on-failure
-    container_name: jackpot
+    container_name: act1
     read_only: true
     ports:
       - "8567:8567"

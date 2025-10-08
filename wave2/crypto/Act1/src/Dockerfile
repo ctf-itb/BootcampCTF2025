@@ -11,7 +11,7 @@ RUN pip3 install -r /home/ctf/chall/requirements.txt
 
 RUN mkdir /home/ctf/chall/src
 
-COPY ./chall.py /home/ctf/chall/src
+COPY ./battle.py /home/ctf/chall/src
 COPY ./run.sh /home/ctf/chall/src
 
 RUN chown -R root:root /home/ctf/chall

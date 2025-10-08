@@ -1,9 +1,11 @@
-name: "JACKPOT!!!"
+name: "Act1: Betrayal"
 # This is used to group challenges in the CTFd UI.
 # choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
 category: cryptography
 description: |- 
-    99% of gamblers quit before they win big. Can you be the top 1%? It's a zero sum game tho.
+    Ouch!
+
+    ![bang](https://media1.tenor.com/m/olAO2hf6lg0AAAAd/attacking-bomb-girl.gif)
 
     Author: **k4tou**
 
@@ -20,12 +22,12 @@ connection_info: nc 163.47.10.146 8567
 
 flags:
     # A static case sensitive flag
-    - CTFITB2025{h4v3_y0u_3v3r_g4mbl3d_w1th_y0ur_l1f3_0n_th3_l1n3?}
+    - CTFITB2025{c4n_y0u_st1ll_3xpl0d3_wh3n_y0u_4r3_w3t?????????}
 
 
 # Provide paths to files from the same directory that this file is in
 files:
-    - dist/chall.py
+    - dist/battle.py
 
 # If provided, the field can take one of two values: hidden, visible.
 state: visible
