@@ -1,0 +1,38 @@
+name: "Jane Doe"
+# This is used to group challenges in the CTFd UI.
+# choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
+category: cryptography
+description: |- 
+    Jane Doe is a common placeholder name for an unidentified person. 
+    Here are her last words before she disappeared:
+
+    "Truth is... I've never gone to school either"
+
+    ![reze](https://image.idntimes.com/post/20250703/upload_6dcf82a2a3f77b727dccbfb964fce60c_8f31355d-0a32-4072-9ffe-ddd3232c9edc.jpg)
+
+    Author: **k4tou**
+
+attribution: k4tou
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{__https://youtu.be/qYcU41ew_BM?si=a7tqWT7SmrGX2GH8__myreze:'}
+
+
+# Provide paths to files from the same directory that this file is in
+files:
+    - src/message.py
+    - src/output.txt
+
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"

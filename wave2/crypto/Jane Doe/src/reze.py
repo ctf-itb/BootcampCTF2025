@@ -1,0 +1,1 @@
+letter = b"CTFITB2025{__https://youtu.be/qYcU41ew_BM?si=a7tqWT7SmrGX2GH8__myreze:'}"
