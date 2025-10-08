@@ -1,0 +1,30 @@
+name: "Baby Shark"
+category: cryptography
+description: |- 
+    Baby shark doo doo doo doo doo... i forgor the lyrics
+
+    Author: **kiwz**
+
+attribution: kiwz
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{b4by_sh4rk_d0o_d0o_d0o_d0o_do0}
+
+
+files:
+    - dist/baby_shark.pcap
+
+tags:
+    - baby
+
+state: visible
+
+version: "0.1"
+

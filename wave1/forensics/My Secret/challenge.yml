@@ -1,0 +1,33 @@
+name: "My Secret"
+category: forensics
+description: |- 
+    Yesterday, my friend told me that there is a software that can give you unlimited astrite. As a true Wuthering Wave player, of course I downloaded it. But hey, why are my secret files suddenly locked? Have I been hacked?
+
+    Author: **Bamane**
+attribution: Bamane
+
+# Don't change this
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{R0cky0u_is_us3fu1_isn't_1t???_Pl3ase_d0n't_t3ll_thi5_t0_Adit}
+
+# Tags are used to provide additional public tagging to a challenge
+tags:
+    - baby/easy
+
+files:
+    - dist/1337.zip
+
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+version: "0.2"

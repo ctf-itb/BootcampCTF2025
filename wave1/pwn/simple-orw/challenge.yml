@@ -1,0 +1,19 @@
+name: "simple orw"
+category: binary exploitation
+description: |-
+    Seriously, what harm could this little ORW program possibly cause?
+    
+    Author: **msfir**
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+connection_info: nc 163.47.10.146 8910
+flags:
+    - CTFITB2025{linux_filesystem_gives_too_much_information_ngl_3721947}
+files:
+    - dist/dist.zip
+state: visible
+version: "0.1"

@@ -1,0 +1,7 @@
+services:
+  rpg:
+    build: .
+    restart: on-failure
+    ports:
+      - "1230:1230"
+
