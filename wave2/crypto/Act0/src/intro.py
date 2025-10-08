@@ -17,13 +17,14 @@ def gen(N_size: int, samples: int, r_bits: int):
     values = []
     for _ in range(samples):
         r = secrets.randbits(r_bits)
+        alpha = N + r
         R.append(r)
-        values.append(pow(d, -1, N + r))
+        values.append(pow(d, -1, alpha))
 
     return N, d, R, values
 
 
-with open("flag.txt", "rb") as f:
+with open("story.txt", "rb") as f:
     flag = f.read()
 
 N, d, R, values = gen(N_SIZE, SAMPLES, R_BITLEN)

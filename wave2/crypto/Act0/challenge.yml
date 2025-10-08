@@ -1,9 +1,11 @@
-name: "kapan ya"
+name: "Act 0: Love, Flower, Chainsaw"
 # This is used to group challenges in the CTFd UI.
 # choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
 category: cryptography
 description: |- 
-    Apakah kategori crypto dari CTF ITB akan punah?
+    Prelude.
+
+    ![prelude](https://substackcdn.com/image/fetch/$s_!hFbJ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc8ca17d1-16cf-4fe8-a9ce-0c1d2c77911b_823x1165.png)
 
     Author: **k4tou**
 
@@ -18,12 +20,13 @@ extra:
 
 flags:
     # A static case sensitive flag
-    - CTFITB2025{con9r4tzzz_y0u_h4v3_l34rn3d_lw3_w_lin4l9_99a7523}
+    - CTFITB2025{th1s_1s_ju5t_th3_b3g1nn1ng_0f_th3_st0ry__99a7523}
 
 
 # Provide paths to files from the same directory that this file is in
 files:
-    - dist/dist.zip
+    - src/intro.py
+    - src/out.txt
 
 # If provided, the field can take one of two values: hidden, visible.
 state: visible
