@@ -3,8 +3,6 @@ category: binary exploitation
 description: |-
     Solve this to unlock hint for silver :D
     
-    Also, you can learn printf exploit from here i guess
-    
     Author: **Etynso**
 value: 1000
 type: dynamic
