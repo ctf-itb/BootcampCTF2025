@@ -1,0 +1,37 @@
+name: "Yamada Ransom"
+# This is used to group challenges in the CTFd UI.
+# choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
+category: reverse engineering
+description: |- 
+    Uhh... Why your face looks like that?
+
+    ![ryo](https://preview.redd.it/daily-character-discussion-ryo-yamada-v0-josw7tgn55ia1.gif?width=474&auto=webp&s=05440627a7cb53518aae74c6e801eacf5d6e2a42)
+
+    Author: **k4tou**
+
+attribution: k4tou
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{omg99_ry0_d0nt_g1v3_th3m_m4lwar3_alr3ady!_:shakemyhead:}
+
+
+# Provide paths to files from the same directory that this file is in
+files:
+    - dist/dist.zip
+
+tags:
+    - baby
+
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
