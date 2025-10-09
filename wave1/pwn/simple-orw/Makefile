@@ -33,7 +33,12 @@ flags:
     - $(FLAG)
 files:
     - $(OUTPUT)
-state: hidden
+hints:
+    - {
+        content: "everything you need is right here: https://docs.kernel.org/filesystems/proc.html",
+        cost: 0
+    }
+state: visible
 version: "0.1"
 endef
 

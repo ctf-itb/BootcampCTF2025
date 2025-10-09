@@ -15,5 +15,10 @@ flags:
     - CTFITB2025{linux_filesystem_gives_too_much_information_ngl_3721947}
 files:
     - dist/dist.zip
+hints:
+    - {
+        content: "everything you need is right here: https://docs.kernel.org/filesystems/proc.html",
+        cost: 0
+    }
 state: visible
 version: "0.1"
