@@ -1,1 +1,1 @@
-pycryptodome>=3.19,<4
+sympy>=1.12,<2.0
