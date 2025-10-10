@@ -16,7 +16,7 @@ def gen(bits: int) -> int:
         if sympy.isprime(cand) and (cand - 1) % 3 != 0:
             return cand
 
-def keygen(bits: int = BITS) -> Tuple[int, int, int, int, int, int]:
+def keygen(bits: int = BITS) -> Tuple[int, int, int]:
     e = 3
     while True:
         p = gen(bits)
