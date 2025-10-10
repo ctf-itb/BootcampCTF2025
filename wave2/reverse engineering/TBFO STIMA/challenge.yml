@@ -1,0 +1,29 @@
+name: "TBFO STIMA"
+category: reverse engineering
+description: |- 
+    tbfo and stima tubes were so packed
+
+    made this challenge instead of finishing them
+
+    Author: **kiwz**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{j4go_tbF0_d4n_st1M4_n1cH}
+
+files:
+    - dist/chall
+
+tags:
+    - easy?
+
+# janlup ganti hidden pas mulai
+state: visible
+version: "0.1"
+
