@@ -1,0 +1,31 @@
+name: "Spaceship.sh"
+# This is used to group challenges in the CTFd UI.
+# choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
+category: web exploitation
+description: |- 
+    Gak tau ini probsetnya ke mana. Tapi... Ok? Siapa di sini yang cita-citanya jadi Astronot!
+
+    - k4tou
+
+    Author: **wazeazure**
+
+attribution: wazeazure
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+connection_info: http://163.47.10.146:4321/
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{whnyh_j4go_sqli_ss12F}
+
+# If provided, the field can take one of two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
