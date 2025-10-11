@@ -24,7 +24,7 @@ extra:
     decay: 15
     minimum: 100
 
-connection_info: http://163.47.10.146:4321/
+connection_info: http://163.47.10.146:6543/
 
 flags:
     # A static case sensitive flag
