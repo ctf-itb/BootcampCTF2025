@@ -1,0 +1,30 @@
+name: "Pulkam"
+category: osint
+description: |- 
+    Adit is a tabibito that has traveled far - far away from his hometown, suddenly his parents called him to get home because they got him a fiancee who is the village head daughter. Because Adit has traveled to many places, Adit forgot where is his hometown and only has this as a clue
+    ![clue](files/clue.png)
+
+    Flag format: `CTFITB2025{<VillageName>_<VillageHeadName>_<Province>_<Country>}`
+    Example: `CTFITB2025{Wonosari_Mulyono_Papua_Indonesia}`
+
+    Author: **Ucokgallagher**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+flags:
+    - CTFITB2025{Pasilihan_YonhiNofri_SumatraBarat_Indonesia}
+
+files:
+  - clue.png
+
+tags:
+    - easy
+
+# janlup ganti hidden pas mau mulai
+state: hidden
+version: "0.1"

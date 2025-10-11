@@ -23,5 +23,5 @@ tags:
     - medium
 
 # janlup ganti hidden pas mulai
-state: visible
+state: hidden
 version: "0.1"
