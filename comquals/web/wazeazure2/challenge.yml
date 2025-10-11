@@ -31,7 +31,7 @@ flags:
     - CTFITB2025{cl13nt_s1d3_cl1ent_s1d3_cl13nt_s1d3___ezzzzz_k4n??????}
 
 # If provided, the field can take one of two values: hidden, visible.
-state: hidden
+state: visible
 
 # Specifies what version of the challenge specification was used.
 version: "0.1"

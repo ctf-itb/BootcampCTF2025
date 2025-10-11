@@ -9,11 +9,11 @@ description: |-
 
 attribution: Fans#1K4tou
 
-value: 1000
+value: 500
 type: dynamic
 extra:
-    initial: 1000
-    decay: 30
+    initial: 500
+    decay: 15
     minimum: 100
 
 connection_info: nc 163.47.10.146 8570
