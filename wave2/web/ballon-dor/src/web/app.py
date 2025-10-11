@@ -95,13 +95,9 @@ def search():
     param_a_sanitized = sanitize_input(param_a_raw)
     param_b_sanitized = sanitize_input(param_b_raw)
 
-    raw_query = f"SELECT name, year, club FROM players WHERE name = '{param_a_sanitized}' AND club = '{param_b_sanitized} '"
-
-    exec_query = raw_query
+    exec_query = f"SELECT name, year, club FROM players WHERE name = '{param_a_sanitized}' AND club = '{param_b_sanitized} '"
     
-    print("raw_query :", exec_query, flush=True)
-    print("repr_query:", repr(exec_query), flush=True)
-
+    print("[Executing] :", exec_query, flush=True)
 
     rows = []
     try:
@@ -119,7 +115,6 @@ def search():
             pass
 
     return render_template(RESULTS_HTML,
-                           raw_query=raw_query,
                            exec_query=exec_query,
                            rows=rows)
 
