@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:8.0.1
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ballonku_ada_7_s1uuuuuu
       MYSQL_DATABASE: ballon
       MYSQL_USER: ballon
       MYSQL_PASSWORD: ballonku_ada_7_s1uuuuuu
