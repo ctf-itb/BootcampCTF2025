@@ -30,8 +30,8 @@ files:
 tags:
     - baby
 
-# If provided, the field can take one of two values: hidden, visible.
-state: visible
+# If provided, the field can take one of two values: hidden, hidden.
+state: hidden
 
 # Specifies what version of the challenge specification was used.
 version: "0.1"

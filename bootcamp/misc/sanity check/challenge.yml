@@ -19,5 +19,5 @@ tags:
     - sanity check
 
 # janlup ganti hidden pas mau mulai
-state: visible
+state: hidden
 version: "0.1"
