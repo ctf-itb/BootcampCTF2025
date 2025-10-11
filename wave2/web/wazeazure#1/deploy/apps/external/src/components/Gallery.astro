@@ -1,0 +1,208 @@
+---
+//TODO: Pagination / load more
+import { Image } from 'astro:assets';
+
+let initialItems: any[] = [];
+try {
+  const apiUrl = new URL('/api/images', "http://localhost:4321").toString();
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+
+  if (data && data.ok) {
+    initialItems = Array.isArray(data.items) ? data.items : [];
+  }
+} catch (error) {
+  console.warn('Failed to fetch initial gallery data:', error);
+}
+---
+
+<section class="gallery-wrap">
+  <h2>Gallery</h2>
+  <div id="gallery" class="gallery">
+    {
+      <Fragment>
+          {initialItems.map((item) => (
+            <div class="card">
+              <div class="thumb">
+                <Image
+                  src={new URL(
+                    `/api/images/${item.id}`,
+                    "http://localhost:4321",
+                  ).toString()}
+                  alt={item.title || 'Space image'}
+                  width={320}
+                  height={320}
+                  loading="lazy"
+                  decoding="async"
+                  style="width:100%;height:100%;object-fit:cover;object-position:center;"
+                />
+              </div>
+              <div class="meta">
+                <div class="title">{item.title || '(no title)'}</div>
+                <div class="row">
+                  <span>{(item.size_bytes / 1024).toFixed(1)} KB</span>
+                  <span class="dot">●</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Fragment>
+    }
+  </div>
+</section>
+
+<script>
+  const el = document.getElementById('gallery');
+  if (!(el instanceof HTMLElement)) {
+    console.error('Gallery element missing');
+  } else {
+    document.addEventListener('uploaded', () => {
+      location.reload();
+    });
+  }
+</script>
+
+<style>
+  .gallery-wrap {
+    margin-top: 2rem;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  }
+  .thumb {
+    aspect-ratio: 1 / 1;
+    background: rgba(255, 255, 255, 0.05);
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .thumb .orb {
+    width: 60%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(138, 180, 255, 0.8),
+      rgba(92, 138, 255, 0.2) 60%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+    box-shadow:
+      inset 0 10px 30px rgba(255, 255, 255, 0.2),
+      0 8px 24px rgba(138, 180, 255, 0.3);
+    animation: float 3.5s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  .meta {
+    padding: 10px 12px;
+  }
+  .title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .row {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+  .row .dot {
+    opacity: 0.5;
+  }
+  .empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    opacity: 0.8;
+    padding: 24px;
+  }
+  .gallery-controls {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .load-more {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    cursor: pointer;
+  }
+  .load-more:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .end-hint {
+    opacity: 0.8;
+  }
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+  }
+  .skeleton .thumb,
+  .skeleton .title,
+  .skeleton .row {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 25%,
+      rgba(255, 255, 255, 0.14) 37%,
+      rgba(255, 255, 255, 0.08) 63%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 1.2s infinite;
+  }
+  .skeleton .thumb {
+    height: 0;
+    padding-top: 100%;
+  }
+  .skeleton .meta {
+    padding: 10px 12px;
+  }
+  .skeleton .title {
+    height: 14px;
+    border-radius: 6px;
+  }
+  .skeleton .row {
+    margin-top: 8px;
+    height: 12px;
+    border-radius: 6px;
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+</style>

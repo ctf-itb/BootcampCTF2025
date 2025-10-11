@@ -1,0 +1,331 @@
+---
+// Server-side configuration
+const uploadConfig = {
+  maxSize: 10 * 1024 * 1024, // 10MB
+  allowedTypes: ['image/png', 'image/jpeg', 'image/gif', 'image/webp'],
+  allowedExtensions: ['png', 'jpg', 'jpeg', 'gif', 'webp'],
+};
+
+const formConfig = {
+  method: 'POST',
+  action: '/api/images',
+  enctype: 'multipart/form-data',
+};
+---
+
+<section class="uploader">
+  <form
+    id="upload-form"
+    class="form"
+    method={formConfig.method}
+    action={formConfig.action}
+  >
+    <input
+      class="title"
+      type="text"
+      name="title"
+      placeholder="Title (optional)"
+    />
+    <div id="dropzone" class="dropzone">
+      <input
+        id="file-input"
+        type="file"
+        name="file"
+        accept={uploadConfig.allowedExtensions
+          .map((ext) => `.${ext}`)
+          .join(',')}
+        required
+        hidden
+      />
+      <div class="dz-body">
+        <div class="icon">📡</div>
+        <div>
+          Drag an image here or <button id="pick" type="button" class="link"
+            >Choose file</button
+          >
+        </div>
+        <small class="hint"
+          >Supports {
+            uploadConfig.allowedExtensions
+              .map((ext) => ext.toUpperCase())
+              .join(', ')
+          }</small
+        >
+      </div>
+      <div class="preview">
+        <img id="preview-img" alt="Selected preview" />
+      </div>
+    </div>
+    <button class="primary" type="submit">Upload</button>
+  </form>
+  <div class="progress" hidden>
+    <div class="bar" style="width:0%"></div>
+  </div>
+  <p id="status" class="status"></p>
+</section>
+
+<style>
+  .uploader {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+  .form {
+    display: grid;
+    gap: 12px;
+  }
+  .title {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
+  .dropzone {
+    border: 2px dashed rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    transition:
+      border-color 0.15s ease,
+      background 0.15s ease;
+  }
+  .dropzone .preview {
+    display: none;
+    margin-top: 8px;
+  }
+  .dropzone.has-preview .preview {
+    display: grid;
+  }
+  .dropzone.has-preview .dz-body {
+    display: none;
+  }
+  .dropzone .preview img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .dropzone.dragover {
+    border-color: #8ab4ff;
+    background: rgba(138, 180, 255, 0.08);
+  }
+  .dz-body {
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+  }
+  .dz-body .icon {
+    font-size: 28px;
+  }
+  .link {
+    background: none;
+    border: none;
+    color: #8ab4ff;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .primary {
+    background: linear-gradient(90deg, #6b8cff, #8a9bff);
+    border: none;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .primary[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .progress {
+    margin-top: 10px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    width: 0%;
+    transition: width 0.15s ease;
+  }
+  .status {
+    margin-top: 6px;
+    min-height: 1.2em;
+    font-size: 0.9rem;
+  }
+  .status.error {
+    color: #ff9aa2;
+  }
+  .status.ok {
+    color: #9ae6b4;
+  }
+</style>
+
+<script>
+  const formEl = document.getElementById('upload-form');
+  const statusEl = document.getElementById('status');
+  const pickBtn = document.getElementById('pick');
+  const fileInput = document.getElementById('file-input');
+  const dropzone = document.getElementById('dropzone');
+  const progress = document.querySelector('.progress');
+  const bar = document.querySelector('.progress .bar');
+  const submitBtn = document.querySelector('.primary');
+  let currentPreviewUrl = '';
+
+  if (
+    !(formEl instanceof HTMLFormElement) ||
+    !(statusEl instanceof HTMLElement) ||
+    !(pickBtn instanceof HTMLButtonElement) ||
+    !(fileInput instanceof HTMLInputElement) ||
+    !(dropzone instanceof HTMLElement) ||
+    !(progress instanceof HTMLElement) ||
+    !(bar instanceof HTMLElement) ||
+    !(submitBtn instanceof HTMLButtonElement)
+  ) {
+    console.error('Required elements missing');
+  } else {
+    const form = formEl;
+    const status = statusEl;
+    const input = fileInput;
+    const dz = dropzone;
+    const prog = progress;
+    const progBar = bar;
+    const pick = pickBtn;
+    const submit = submitBtn;
+    const preview = dz.querySelector('.preview');
+    const previewImg = dz.querySelector('#preview-img');
+
+    function setPreviewFromInput() {
+      if (
+        !(preview instanceof HTMLElement) ||
+        !(previewImg instanceof HTMLImageElement)
+      )
+        return;
+      const f = input.files && input.files[0];
+      if (!f) {
+        clearPreview();
+        return;
+      }
+      if (currentPreviewUrl) URL.revokeObjectURL(currentPreviewUrl);
+      currentPreviewUrl = URL.createObjectURL(f);
+      previewImg.src = currentPreviewUrl;
+      dz.classList.add('has-preview');
+    }
+
+    function clearPreview() {
+      if (
+        !(preview instanceof HTMLElement) ||
+        !(previewImg instanceof HTMLImageElement)
+      )
+        return;
+      if (currentPreviewUrl) URL.revokeObjectURL(currentPreviewUrl);
+      currentPreviewUrl = '';
+      previewImg.src = '';
+      dz.classList.remove('has-preview');
+    }
+
+    ['dragenter', 'dragover'].forEach((ev) =>
+      dz.addEventListener(ev, (e) => {
+        e.preventDefault();
+        dz.classList.add('dragover');
+      }),
+    );
+    ['dragleave', 'drop'].forEach((ev) =>
+      dz.addEventListener(ev, (e) => {
+        e.preventDefault();
+        dz.classList.remove('dragover');
+      }),
+    );
+    dz.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      if (!dt) return;
+      const files = dt.files;
+      if (files && files[0]) {
+        input.files = files;
+        setPreviewFromInput();
+      }
+    });
+    pick.addEventListener('click', () => input.click());
+    input.addEventListener('change', () => {
+      const f = input.files && input.files[0];
+      if (f) setPreviewFromInput();
+      else clearPreview();
+    });
+
+    // simple inline validation
+
+    async function doUpload() {
+      const f = input.files && input.files[0];
+      if (!f) {
+        status.className = 'status error';
+        status.textContent = 'Please select a file.';
+        return;
+      }
+      {
+        const maxSize = 10 * 1024 * 1024; // 10MB from server config
+        const okTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
+        if (!okTypes.includes(f.type)) {
+          status.className = 'status error';
+          status.textContent = 'Only image files are allowed.';
+          return;
+        }
+        if (f.size > maxSize) {
+          status.className = 'status error';
+          status.textContent = 'File size exceeds 10MB.';
+          return;
+        }
+      }
+      status.className = 'status';
+      status.textContent = 'Uploading...';
+      submit.disabled = true;
+      prog.hidden = false;
+      progBar.style.width = '0%';
+      const fd = new FormData(form);
+      // fake progress animation
+      let pct = 10;
+      const timer = setInterval(() => {
+        pct = Math.min(pct + 10, 90);
+        progBar.style.width = pct + '%';
+      }, 100);
+      try {
+        const res = await fetch('/api/images', { method: 'POST', body: fd });
+        const data = await res.json();
+        clearInterval(timer);
+        progBar.style.width = '100%';
+        if (data.ok) {
+          status.className = 'status ok';
+          status.textContent = 'Uploaded!';
+          form.reset();
+          input.value = '';
+          const ev = new CustomEvent('uploaded', { bubbles: true });
+          form.dispatchEvent(ev);
+        } else {
+          status.className = 'status error';
+          status.textContent = 'Error: ' + (data.error || 'unknown');
+        }
+      } catch (err) {
+        clearInterval(timer);
+        status.className = 'status error';
+        status.textContent = 'Network error';
+      } finally {
+        setTimeout(() => {
+          prog.hidden = true;
+          progBar.style.width = '0%';
+          submit.disabled = false;
+        }, 400);
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await doUpload();
+    });
+  }
+</script>

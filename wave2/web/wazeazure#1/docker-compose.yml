@@ -1,0 +1,21 @@
+services:
+  db:
+    container_name: db
+    build:
+      context: ./deploy/db
+    environment:
+      POSTGRES_USER: wazeazure
+      POSTGRES_PASSWORD: whnyh
+      POSTGRES_DB: wazeazure
+  app:
+    container_name: app
+    build:
+      context: ./deploy/apps
+    ports:
+      - "4321:4321"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: wazeazure
+      DB_PASSWORD: whnyh
+      DB_NAME: wazeazure
