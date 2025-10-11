@@ -27,5 +27,5 @@ python3 bot.py --interval 10
 ```
 - running with history
 ```
-python bot.py --existing --interval 10
+python3 bot.py --existing --interval 10
 ```
