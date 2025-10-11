@@ -1,0 +1,9 @@
+name: pwn-sandboxed
+services:
+  chall:
+    build: .
+    ports:
+      - "8457:5000"
+    restart: on-failure
+    privileged: true
+    container_name: sandboxed
