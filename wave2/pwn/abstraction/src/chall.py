@@ -28,7 +28,7 @@ f = ftype(ctypes.addressof(fpointer))
 
 shellcode = base64.b64decode(input("Send over your shellcode: "))
 
-bad = [0x48, 0xE8, 0xE9, 0xEB]
+bad = [0x48]
 if any(b in shellcode for b in bad) or len(shellcode) > 0x70 :
     print("Bad Shellcode!")
     exit(1)

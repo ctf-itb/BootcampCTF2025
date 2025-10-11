@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>
 #include <sys/syscall.h>
 
 char buf[0x101];
@@ -16,6 +17,10 @@ void vuln(){
         printf("Hoi: ");
         int n = read(0, buf, 0x101);
         buf[n] = 0;
+        if (strstr(buf, "udah deh bang aku nyerah")) {
+            printf("Oke\n");
+            break;
+        }
         printf(buf);
     }
 }
