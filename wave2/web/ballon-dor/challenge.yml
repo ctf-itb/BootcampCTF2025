@@ -1,0 +1,28 @@
+name: "Ballon d'Or"
+category: web exploitation
+description: |- 
+    Who do you think will be the next Ballon d'Or winner?
+
+    Author: **dovodedomo**
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+connection_info: http://163.47.10.146:6957/
+
+flags:
+    - CTFITB2025{YANG_LAGI_VIRAL!!DJ_LAMINE_YAMAL_Y_QUE_FUE_X_DIGEBOY_VIRAL_TIKTOK_YANG_KALIAN_CARI_CARI}
+
+tags:
+    - medium
+
+files:
+    - dist/ballon-dist.zip
+
+# janlup ganti hidden pas mau mulai
+state: hidden
+version: "0.1"

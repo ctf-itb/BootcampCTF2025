@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Results • Ballon d'Or DB</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <style>
+      :root {
+        --bg: #0b0d12;
+        --card: #12151d;
+        --muted: #9aa3b2;
+        --text: #e7ecf3;
+        --accent: #35b37e;
+        --accent-2: #4aa3ff;
+        --code-bg: #0f1320;
+        --border: #1c2230;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+        background: radial-gradient(1200px 600px at 20% -10%, #12203a 0%, transparent 60%),
+                    radial-gradient(900px 500px at 100% 10%, #1a2a42 0%, transparent 60%),
+                    var(--bg);
+        color: var(--text);
+        display: grid;
+        place-items: start center;
+        padding: 32px 16px 80px;
+      }
+      .container {
+        width: min(900px, 100%);
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)) , var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        padding: 24px;
+      }
+      h1 {
+        font-size: 1.6rem;
+        margin: 0 0 8px;
+        letter-spacing: .3px;
+      }
+      .sub {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: .95rem;
+      }
+      .section-title {
+        margin: 22px 0 8px;
+        font-weight: 600;
+        color: var(--accent-2);
+      }
+      code {
+        background: var(--code-bg);
+        padding: 10px 12px;
+        display: block;
+        white-space: pre-wrap;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: .9rem;
+        color: #e6f3ff;
+      }
+      ul.results {
+        list-style: none;
+        padding: 0;
+        margin: 18px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+      .item {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 14px;
+      }
+      .item b { color: #fff; }
+      .muted { color: var(--muted); }
+      .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 22px;
+      }
+      .btn {
+        appearance: none;
+        border: 1px solid var(--border);
+        background: #0f1421;
+        color: #eef4ff;
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform .06s ease, border-color .2s ease, background .2s ease;
+      }
+      .btn:hover { transform: translateY(-1px); border-color: #2a364b; }
+      .btn-accent { background: linear-gradient(180deg, #36b37e, #2e9b6d); border: none; color: white; }
+      .btn-accent:hover { filter: brightness(1.05); }
+
+      /* Floating sound toggle */
+      .sound {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 50;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: #0e1524;
+        color: #eaf2ff;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        user-select: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,.25);
+        font-weight: 600;
+      }
+      .sound .dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+      }
+      @media (max-width: 520px) {
+        .actions { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Query results</h1>
+      <p class="sub">Executed SQL shown for teaching/demo purposes.</p>
+
+      <div class="section-title">Before decode</div>
+      <code>{{ raw_query }}</code>
+
+      <div class="section-title">After decode</div>
+      <code>{{ exec_query }}</code>
+
+      {% if rows %}
+        <div class="section-title">Rows</div>
+        <ul class="results">
+          {% for r in rows %}
+            <li class="item">
+              <div><b>{{ r['name'] }} ({{ r['club'] }})</b></div>
+              <div class="muted">{{ r['club'] }}</div>
+              <div>{{ r['description'] }}</div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted" style="margin-top:18px;">No rows found.</p>
+      {% endif %}
+
+      <div class="actions">
+        <a class="btn" href="/">← Back</a>
+        <a class="btn btn-accent" href="/">New search</a>
+      </div>
+    </div>
+
+    <!-- Background music -->
+    <audio id="bgm" src="{{ url_for('static', filename='audio/theme.mp3') }}" autoplay loop></audio>
+    <button id="sound" class="sound" type="button">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="sound-label">Sound: On</span>
+    </button>
+
+    <script>
+      (function () {
+        const audio = document.getElementById('bgm');
+        const btn   = document.getElementById('sound');
+        const label = document.getElementById('sound-label');
+
+        audio.volume = 0.50;
+
+        // Handle browsers that block autoplay with sound
+        audio.play().catch(() => {
+          audio.muted = true;
+          label.textContent = 'Sound: Off';
+          audio.play().catch(()=>{});
+        });
+
+        btn.addEventListener('click', () => {
+          audio.muted = !audio.muted;
+          label.textContent = audio.muted ? 'Sound: Off' : 'Sound: On';
+        });
+      })();
+    </script>
+  </body>
+</html>

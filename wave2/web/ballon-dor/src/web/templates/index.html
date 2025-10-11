@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Ballon d'Or Lookup</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <style>
+      :root {
+        --bg: #0b0d12;
+        --card: #12151d;
+        --muted: #9aa3b2;
+        --text: #e7ecf3;
+        --accent: #35b37e;
+        --accent-2: #4aa3ff;
+        --border: #1c2230;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+        background: radial-gradient(1200px 600px at 20% -10%, #12203a 0%, transparent 60%),
+                    radial-gradient(900px 500px at 100% 10%, #1a2a42 0%, transparent 60%),
+                    var(--bg);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 32px 16px 80px;
+      }
+      .card {
+        width: min(520px, 100%);
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)) , var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        padding: 24px;
+      }
+      h1 { margin: 0 0 6px; font-size: 1.6rem; letter-spacing: .3px; }
+      p.sub { margin: 0 0 18px; color: var(--muted); }
+      form { display: grid; gap: 10px; }
+      label { font-weight: 600; color: var(--accent-2); }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #0f1421;
+        color: #eef4ff;
+        outline: none;
+      }
+      input[type="text"]::placeholder { color: #7f8aa3; }
+      .actions { display: flex; gap: 10px; margin-top: 10px; }
+      .btn {
+        appearance: none;
+        border: 1px solid var(--border);
+        background: #0f1421;
+        color: #eef4ff;
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: transform .06s ease, border-color .2s ease, background .2s ease;
+      }
+      .btn:hover { transform: translateY(-1px); border-color: #2a364b; }
+      .btn-accent { background: linear-gradient(180deg, #36b37e, #2e9b6d); border: none; color: white; }
+      .hint { margin-top: 10px; color: var(--muted); font-size: .95rem; }
+      /* Floating sound toggle */
+      .sound {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 50;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: #0e1524;
+        color: #eaf2ff;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        user-select: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,.25);
+        font-weight: 600;
+      }
+      .sound .dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Ballon d'Or database</h1>
+      <p class="sub">CTF demo — search the archive.</p>
+
+      <form action="/search" method="get" autocomplete="off">
+        <div>
+          <label for="name">Player name</label>
+          <input id="name" name="name" type="text" placeholder="e.g., Lionel Messi">
+        </div>
+        <div>
+          <label for="club">Club</label>
+          <input id="club" name="club" type="text" placeholder="e.g., 2019">
+        </div>
+        <div class="actions">
+          <button class="btn btn-accent" type="submit">Search</button>
+          <a class="btn" href="/">Reset</a>
+        </div>
+      </form>
+      <p class="hint">Try to find the secret description in the database.</p>
+    </div>
+
+    <!-- Background music -->
+    <audio id="bgm" src="{{ url_for('static', filename='audio/theme.mp3') }}" autoplay loop></audio>
+    <button id="sound" class="sound" type="button">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="sound-label">Sound: On</span>
+    </button>
+
+    <script>
+      (function () {
+        const audio = document.getElementById('bgm');
+        const btn   = document.getElementById('sound');
+        const label = document.getElementById('sound-label');
+
+        audio.volume = 0.22;
+
+        audio.play().catch(() => {
+          audio.muted = true;
+          label.textContent = 'Sound: Off';
+          audio.play().catch(()=>{});
+        });
+
+        btn.addEventListener('click', () => {
+          audio.muted = !audio.muted;
+          label.textContent = audio.muted ? 'Sound: Off' : 'Sound: On';
+        });
+      })();
+    </script>
+  </body>
+</html>
