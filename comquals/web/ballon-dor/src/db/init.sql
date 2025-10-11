@@ -11,6 +11,7 @@ CREATE TABLE players (
 );
 
 INSERT INTO players (name, year, club, description) VALUES
+('Lorem', 2016, 'Ipsum ', "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
 ('Cristiano Ronaldo', 2017, 'Real Madrid', "Cristiano Ronaldo claimed his fifth Ballon d'Or in 2017 after an extraordinary calendar year that included leading Real Madrid to a La Liga and UEFA Champions League double, scoring 42 league goals and 12 in the Champions League, with pivotal strikes in the UCL final against Juventus."),
 ('Lionel Messi', 2021, 'Paris Saint-Germain F.C.', "Lionel Messi secured his seventh Ballon d'Or in 2021, largely for captaining Argentina to their first Copa América title in 28 years, where he was the top scorer with 4 goals and 5 assists, earning Player of the Tournament honors, alongside a stellar La Liga season at Barcelona with 38 goals and 14 assists."),
 ('Karim Benzema', 2022, 'Real Madrid', "Karim Benzema won his maiden Ballon d'Or in 2022 following a prolific season at Real Madrid, where he netted 44 goals across all competitions, clinched the UEFA Champions League and La Liga titles, and claimed the European Golden Shoe as Europe's top scorer."),
