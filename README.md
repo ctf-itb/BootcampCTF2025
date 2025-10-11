@@ -14,3 +14,18 @@
 
 - **Wave 1 ~Class Round~:** 28-3 September-October 2025 (online)
 - **Wave2 ~Community Quals~:** 5-12 October 2025 (online)
+
+
+## First blood bot
+- do
+```
+cp .env.example .env
+```
+- running without history
+```
+python3 bot.py --interval 10
+```
+- running with history
+```
+python bot.py --existing --interval 10
+```
