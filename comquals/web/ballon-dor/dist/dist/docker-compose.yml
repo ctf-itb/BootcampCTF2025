@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0.1
+    environment:
+      MYSQL_ROOT_PASSWORD: ballon
+      MYSQL_DATABASE: ballon
+      MYSQL_USER: ballon
+      MYSQL_PASSWORD: ballon
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+
+  web:
+    build: ./web
+    depends_on:
+      - db
+    ports:
+      - "6957:5000"
+    environment:
+      DB_HOST: db
+      DB_USER: ballon
+      DB_PASS: ballon
+      DB_NAME: ballon
+      SECRET_KEY: "ballonku_meletus_d0r"
