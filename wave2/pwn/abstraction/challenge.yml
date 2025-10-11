@@ -1,0 +1,19 @@
+name: "abstraction"
+category: binary exploitation
+description: |-
+    assembly compiler nowadays lowkey has too much abstraction, and people are bragging about programming with it when it's basically a high level language now T_T ! Let's do some machine code programming instead
+    
+    Author: **Etynso**
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+connection_info: nc 163.47.10.146 8333
+flags:
+    - CTFITB2025{now_you_can_flex_your_low_level_programming_skills_cb6804a066c}
+files:
+    - dist/dist.zip
+state: visible
+version: "0.1"

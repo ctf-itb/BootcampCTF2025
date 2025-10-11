@@ -1,0 +1,8 @@
+name: abstraction-pwn
+services:
+  chall:
+    build: .
+    ports:
+      - "8333:1337"
+    restart: on-failure
+    container_name: abstraction-pwn

@@ -2,7 +2,7 @@ from pwn import *
 
 context.arch = "AMD64"
 
-r = remote("localhost", 8555)
+r = remote("163.47.10.146", 8555)
 
 r.sendline(b"%p")
 r.recvuntil(b"0x")

@@ -1,0 +1,19 @@
+name: "rawr"
+category: binary exploitation
+description: |-
+    maybe if i made the challenge super simple someone is gonna attempt it (¬‿¬)
+    
+    Author: **Etynso**
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+connection_info: nc 163.47.10.146 8444
+flags:
+    - CTFITB2025{i'm_actually_gay_but_no_one_will_know_because_its_not_like_anyone_will_solve_this}
+files:
+    - dist/dist.zip
+state: visible
+version: "0.1"
