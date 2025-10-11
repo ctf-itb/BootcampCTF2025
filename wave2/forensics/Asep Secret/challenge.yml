@@ -15,7 +15,7 @@ extra:
     minimum: 100
 
 files:
-    - dist/punyaasep.pcap
+    - dist/chall.pcap
 
 flags:
     # A static case sensitive flag
