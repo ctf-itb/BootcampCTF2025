@@ -5,8 +5,8 @@
 
 ## Specification
 
-- Soal wave1 memiliki tingkat kesulitan Baby, Easy untuk practive materi
-- Soal wave2 memiliki tingkat kesulitan Easy, Medium, Hard
+- Soal Bootcamp memiliki tingkat kesulitan Baby, Easy untuk practive materi
+- Soal Comquals memiliki tingkat kesulitan Easy, Medium, Hard
 - Untuk soal yang membutuhkan hosting, wajib menggunakan docker compose
 
 
