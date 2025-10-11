@@ -1,0 +1,19 @@
+name: "Multo"
+category: binary exploitation
+description: |-
+    Minumulto ng damdamin ko
+    
+    Author: **Kurond**
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+connection_info: nc 163.47.10.146 8991
+flags:
+    - CTFITB2025{K4mu_Mult0_4Ku_Mult0_K1t4_S3mu4_Mult0}
+files:
+    - dist/dist.zip
+state: visible
+version: "0.1"
