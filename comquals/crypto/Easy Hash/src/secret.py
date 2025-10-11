@@ -1,0 +1,1 @@
+FLAG = "CTFITB2025{biar_gak_bosen_number_theory_terus____non_math_lebih_seru_juga_loh}"

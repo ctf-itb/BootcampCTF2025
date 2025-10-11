@@ -1,0 +1,36 @@
+name: "Easy Hash"
+# This is used to group challenges in the CTFd UI.
+# choose one: binary exploitation, reverse engineering, web exploitation, cryptography, forensics, miscellaneous.
+category: cryptography
+description: |- 
+    Who wants to learn number theory anyway...
+
+    Author: **Fans#1K4tou**
+
+attribution: Fans#1K4tou
+
+value: 1000
+type: dynamic
+extra:
+    initial: 1000
+    decay: 30
+    minimum: 100
+
+connection_info: nc 163.47.10.146 8570
+
+tags:
+    - easy
+
+flags:
+    # A static case sensitive flag
+    - CTFITB2025{biar_gak_bosen_number_theory_terus____non_math_lebih_seru_juga_loh}
+
+# Provide paths to files from the same directory that this file is in
+files:
+    - dist/chall.py
+
+# If provided, the field can take one of two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+version: "0.1"
