@@ -23,7 +23,7 @@ services:
       APPNAME: Admin
       APPURL: http://proxy/
       APPURLREGEX: ^http(|s)://.*$
-      APPFLAG: dev{flag}
+      APPFLAG: CTFITB2025{cl13nt_s1d3_cl1ent_s1d3_cl13nt_s1d3___ezzzzz_k4n??????}
       APPLIMIT: 2
       APPLIMITTIME: 60
       USE_PROXY: 1
