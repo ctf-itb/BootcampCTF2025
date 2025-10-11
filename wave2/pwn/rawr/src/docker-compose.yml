@@ -1,0 +1,8 @@
+name: rawr-pwn
+services:
+  chall:
+    build: .
+    ports:
+      - "8444:1337"
+    restart: on-failure
+    container_name: rawr-pwn
