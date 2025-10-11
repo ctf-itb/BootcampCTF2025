@@ -1,0 +1,26 @@
+name: "Cookie Monster"
+category: reverse engineering
+description: |- 
+    Seems like there are some gim members? let's see how well you know this game engine!
+
+    Author: **Etynso**
+
+value: 500
+type: dynamic
+extra:
+    initial: 500
+    decay: 15
+    minimum: 100
+
+flags:
+    - CTFITB2025{y34_60d07_15_pr377y_345y_70_r3v3r53_tbh_GG}
+
+files:
+    - dist/game.zip
+
+tags:
+    - etynso
+
+# janlup ganti hidden pas mulai
+state: hidden
+version: "0.1"
