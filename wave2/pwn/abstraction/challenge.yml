@@ -15,5 +15,5 @@ flags:
     - CTFITB2025{now_you_can_flex_your_low_level_programming_skills_cb6804a066c}
 files:
     - dist/dist.zip
-state: visible
+state: hidden
 version: "0.1"
