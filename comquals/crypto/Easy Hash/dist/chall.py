@@ -36,32 +36,35 @@ def register_user():
     secure_token = f"{token}:::hmac={get_hmac(token.encode())}"
     encoded_secure_token = base64.b64encode(secure_token.encode()).decode('latin-1')
 
-    print("Your access token: ", encoded_secure_token)
+    print(f"Your access token: {encoded_secure_token}\n")
 
 
 def login_user():
     user_data = parse_token(input("Enter access token: "))
 
     if user_data is None:
-        print("Unverified login detected :(")
+        print("Unverified login detected :(\n")
         return
 
-    print(f"Hello {user_data['name']}, why don't you stay and relax here? [https://youtu.be/vy63u2hKoPE?si=CI0Fl5xu4sVj2DbK]")
+    print(f"Hello {user_data['name']}, why don't you stay and relax here? [https://youtu.be/vy63u2hKoPE?si=CI0Fl5xu4sVj2DbK]\n")
 
 
 def request_secret():
     user_data = parse_token(input("Enter access token: "))
     
     if user_data is None:
-        print("Unverified login detected")
+        print("Unverified login detected\n")
         return
 
     if user_data["authorized"] == "true":
         print("Hmmm looks forged to me...")
         user_id = int(user_data["user_id"], 2)
-        print(f"I'm not gonna give the secret right away...\n{sha256(FLAG[user_id : user_id + 3].encode()).hexdigest()}")
+        enc1 = s2n(sha256(FLAG[user_id : user_id + 3].encode()).digest())
+        enc2 = s2n(sha256(FLAG[user_id + 3 : user_id + 6].encode()).digest())
+        enc3 = s2n(sha256(FLAG[user_id + 6 : user_id + 9].encode()).digest())
+        print(f"I'm not gonna give the secret right away...\n{enc1 * enc2 * enc3}\n")
     else:
-        print("Uh oh :-(")
+        print("Uh oh :-(\n")
 
 
 def main():
@@ -79,9 +82,9 @@ def main():
             elif choice == 4:
                 break
             else:
-                print("Invalid choice")
+                print("Invalid choice\n")
         except Exception:
-            print(f"Oh no...")
+            print(f"Oh no...\n")
 
 
 if __name__ == "__main__":
