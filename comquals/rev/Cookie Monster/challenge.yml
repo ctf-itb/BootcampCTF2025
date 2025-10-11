@@ -22,5 +22,5 @@ tags:
     - etynso
 
 # janlup ganti hidden pas mulai
-state: hidden
+state: visible
 version: "0.1"
