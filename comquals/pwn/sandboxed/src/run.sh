@@ -1,3 +1,3 @@
 #!/bin/sh
 
-./sandbox ./chall
+/app/sandbox /app/chall
